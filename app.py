@@ -48,3 +48,32 @@ def create_single_cupcake():
     # confirm successful add; return with status code 201 CREATE
     return (jsonify(cupcake=serialized), 201)
 
+
+@app.route('/api/cupcakes/<int:cupcake_id>', methods=['PATCH'])
+def update_cupcake(cupcake_id):
+    ''' Updating cupcake. Can assume entire cupcake object is passed. Returns 
+    JSON of updated cupcake as {cupcake: {id, flavor, size, rating, image}}'''
+
+    cupcake = Cupcake.query.get_or_404(cupcake_id)
+
+    # Collect new properties
+    cupcake.flavor = request.json['flavor'] 
+    cupcake.size= request.json['size'] 
+    cupcake.rating = request.json['rating']
+    cupcake.image = request.json['image']
+    # TODO - How can we update only the 'new'/different values compared with the instance we already have?
+
+    db.session.commit()
+    serialized = cupcake.serialize()
+    return jsonify(cupcake=serialized)
+
+@app.route('/api/cupcakes/<int:cupcake_id>', methods=['DELETE'])
+def delete_cupcake(cupcake_id):
+    '''Deletes a cupcake. Returns JSON of deleted cupcake as {message: "Deleted"}'''
+
+    # Get and delete cupcake
+    cupcake = Cupcake.query.get_or_404(cupcake_id)
+    db.session.delete(cupcake)
+    db.session.commit()
+
+    return jsonify({"message": "Deleted"})
