@@ -1,4 +1,4 @@
-"""Models for Cupcake app."""
+'''Models for Cupcake app.'''
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -31,7 +31,7 @@ class Cupcake(db.Model):
         return f'<id {self.id}, flavor {self.flavor}, size {self.size}>'
 
     def serialize(self):
-        """ Serialize to dictionary """ 
+        ''' Serialize to dictionary ''' 
         return {
             "id": self.id,
             "flavor": self.flavor,

@@ -37,7 +37,6 @@ def create_single_cupcake():
     size = request.json['size'] 
     rating = request.json['rating'] 
     image = request.json['image'] or None
-    # TODO: is is RESTful practice to include the default URL here too
 
     new_cupcake = Cupcake(flavor=flavor, size=size, rating=rating, image=image)
 
