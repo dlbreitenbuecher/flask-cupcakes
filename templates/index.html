@@ -5,6 +5,7 @@
 {% block content %}
 
 <!-- List of cupcakes -->
+<h1>Peruse our Cupcakes:</h1>
 <ul id="cupcake-list">
 
 </ul>
@@ -13,17 +14,17 @@
 <h3>Add a Cupcake!</h3>
 <form id="create-cupcake-form">
     <label for="flavor">Flavor</label>
-    <input type="text" id="flavor" name="flavor"><br>
+    <input type="text" id="flavor"><br>
 
     <label for="size">Size</label>
-    <input type="text" id="size" name="size"><br>
+    <input type="text" id="size"><br>
 
     <label for="rating">Rating</label>
-    <input type="text" id="rating" name="rating"><br>
+    <input type="text" id="rating"><br>
 
     <label for="image">Image URL</label>
-    <input type="text" id="image" name="image"><br>
-    <button type="submit">Bake Cupcake</button>
+    <input type="text" id="image" ><br>
+    <button type="submit" class="btn btn-success">Bake Cupcake</button>
 </form>
 
 {% endblock %}
